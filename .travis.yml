@@ -24,3 +24,15 @@ after_success:
   - docker push sssuthe/complex-server
   - docker push sssuthe/complex-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: DockerComplex-env
+  bucket_name: elasticbeanstalk-us-east-1-033966497385
+  bucket_path: docker-complex
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+
