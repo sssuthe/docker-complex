@@ -27,7 +27,7 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: DockerComplex
+  app: docker-complex
   env: DockerComplex-env
   bucket_name: elasticbeanstalk-us-east-1-033966497385
   bucket_path: docker-complex
