@@ -16,7 +16,7 @@ after_success:
   - docker build -t sssuthe/complex-nginx ./nginx
   - docker build -t sssuthe/complex-server ./server
   - docker build -t sssuthe/complex-worker ./worker
-  #first login to the docker cli
+  #first login to the docker cli, these values are in the settings in travis
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #now we need to push these to docker hub
   - docker push sssuthe/complex-client
@@ -27,7 +27,8 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: DockerComplex-env
+  app: DockerComplex
+  env: DockerComplex-env
   bucket_name: elasticbeanstalk-us-east-1-033966497385
   bucket_path: docker-complex
   on:
